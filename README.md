@@ -1,50 +1,22 @@
-# Flutter Architecture Template
+# BookSpark
 
-This project craeeted for proffesionel application arhitecture.
+Bu proje kitap okuma alışkanlığını bir nebzede olsa faydası olması için hazırlıyorum. Bireylerin günlük kitap okuma hedeflerini arttırmaya yönelik küçük bir iş planı hazırlamaktayım.
 
-## Architecture
+## Proje hakkında
 
-We writed every mobile development unit at this website.
+Hazırladığım iş planını bir mobil uygulama platformu üzerinde çalışacak şekilde kurguladım.
 
-- [Mobile Architecture](https://vb10.dev/#/)
+BookSpark sahip kullanıcılarımız. Ellerinde bulundurdukları kitapları kolay bir şekilde ister barkod okuyucu ile ister uygulama içinde aratarak hızlıca kitap okuma listesine eklemektedir.
 
-> Now only support turkish language, it's comming soon other options.
+Sonrasında günlük okudukları kitap sayısını kolayca sisteme ekleyebiliyor. Ayrıca günlük kitap sayısı eklemeyi unuttukları durumda ise uygulamadan gelen bildirimlerle hatırlatmalar yapmayıda hedeflemekteyim.
 
-## Architecture Video Series
+Kitap okuma takibi yapmak kitap okuma alışkanlığı edinmek isteyen bireyler için çok yetersiz olacağını düşündüğüm için kapsamı biraz daha geniş tutmayı hedefliyorum.
 
----
-I was shared mobile development practices on my channel so I supported only Turkish now, I have will creating global content coming soon.
+### Sadece kitap takip etmek mi?
 
-### **Season 1**
+Sadece kitap takibi yapmak alışkanlık kazanmak isteyen bireyler için motivasyon kaynağı olarak görülebilir fakat bu durumu devam ettirmek oldukça zor olacaktır. Bu durumu aşabilmek için kullancıları kitap ile olan bağlarını güçlendirmem gerekiyor bunun içinde kitap ile ilgili düşüncelerini ve notlarını tutabileceği aynı zamanda kitap ile ilgili güzel sözleri alıntılar yaparak mobil uygulamada güvenli bir şekilde saklayabilecekleri bir ortam sağlamayı hedefliyorum.
 
-1. [Mimari Hakkında(About Architecture)](https://www.youtube.com/watch?v=fGNXqZd-Als&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv)
-2. [Uygulama Mimarisi(Application Architecture)](https://www.youtube.com/watch?v=Xn8q9ywXKDc&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=2)
-3. [Temel Widget Konsepti (Base Widget Concept)](https://www.youtube.com/watch?v=crKJEBxyxS8&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=3)
-4. [Durum Yönetimi(State Management)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=4)
-5. [Uygulama Dil ve Tema Yönetimi(Application Language and Theme Management)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=5)
-6. [Uygulama Yönlendirme(Navigation Architecture)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=6)
-7. [Yerel Saklama (Application Local Stroage)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=7)
-8. [Ağ İstekleri Yönetme (Network Architecture)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=8)
+### İlerleyen zamanlarda ise
 
-##  **Season 2**
+Kitap okuma alışkanlığı kazanmak isteyen bireylerin bu dünyada sayılarını azımsanmyacak derece fazla olduğu hata ve hatta Türkiye'de bu sayıların oldukça fazla olduğu hepimiz biliyoruz. TUİK verilerine göre... Bu kısımlara hiç girmeden ilerleyen zamanlarda küçükte olsa sosyal medya benzeri bir uygulamaya evrileceğini düşünüyorum. Çünkütüm zorluklar paylaşarak aşılır.
 
-9.  [Snippet Geliştirme (Sniipet Management)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=9)
-10. [Extension](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=10)
-11. [Tema Mimarisi Gelişmiş (Advanced Theme Management)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=11)
-12. [Gelişmiş Ağ İstekleri Yönetme (Advanced Network Managment)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=12)
-13. [Widget Mimarisi (Widget Architecture)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=13)
-14. [Uygulama Apple Store Yükleme Yönetimi (Publish Apple Architecture)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=15)
-15. [Uygulama Android Store Yükleme Yönetimi (Publish Google Architecture)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=14)
-16. [Unit Test Geliştirme (Unit Test Development)](https://www.youtube.com/watch?v=1a5VeHQlo0Q&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=16)
-
-## **Season 3**
-
-16. [Tanıtım Ekranları  (OnBoard Screen)](https://www.youtube.com/watch?v=7ifniDxWNgQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=17)
-17. [Giriş Ekranı (Login Screen)](https://www.youtube.com/watch?v=7ifniDxWNgQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=18)
-18. [Akış Ekranı (Akış Ekranı Geliştirmeleri)](https://www.youtube.com/watch?v=I2Eg-mC1eOA&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=19)
-
-
-## Contribution
-
-
-|  <a href="https://www.linkedin.com/in/krdnzbeyza1999/"><img src="https://avatars3.githubusercontent.com/u/57248151?s=460&u=bca4a4cfa8303a44875df0e6c69afe76428c0139&v=4" height="50" width="50" style="border-radius:50%;"></a>   |  |
