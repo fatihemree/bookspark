@@ -1,0 +1,17 @@
+{
+    "user":{
+        "fullname":"fatih emre",
+        "email":"test@test.com"
+    },
+    "book":{
+        "name":"içimizdeki şeytan",
+        "writer":"Sabahattin Ali"
+    },
+    "quates":{
+        "1":{
+            "id":1,
+            "date":"10/04/2021",
+            "text":"Bazen diyorum böylemi olması gerekiyordu"
+        }
+    }
+}
