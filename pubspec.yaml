@@ -44,6 +44,8 @@ dependencies:
   shared_preferences: ^0.5.7+3
   shimmer: ^1.1.2
   simple_gesture_detector: ^0.2.0
+  syncfusion_flutter_charts: ^19.1.58
+  syncfusion_flutter_gauges: ^19.1.58
   table_calendar: ^3.0.0
   vexana: ^1.2.2
 
