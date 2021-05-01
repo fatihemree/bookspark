@@ -29,13 +29,13 @@ class HomeView extends StatelessWidget {
   Padding buildHeadline(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: context.width * .075, vertical: context.width * .01),
+          horizontal: context.width * .075, vertical: context.width * .035),
       child: SizedBox(
         width: double.infinity,
         child: Text(
           'Okunan Kitap',
-          style:
-              context.textTheme.subtitle1.copyWith(fontWeight: FontWeight.bold),
+          style: context.textTheme.headline6.copyWith(
+              fontWeight: FontWeight.bold, fontSize: context.width * .05),
           textAlign: TextAlign.left,
         ),
       ),
