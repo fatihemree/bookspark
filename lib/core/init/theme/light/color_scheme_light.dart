@@ -9,13 +9,14 @@ class ColorSchemeLight {
 
   ColorSchemeLight._init();
 
-  final Color brown = Color(0xffa87e6f);
-  final Color red = Color(0xffc10e0e);
+  final Color redLight = Color(0xffF8896C);
+  final Color red = Color(0xffFA604E);
+  final Color yellow = Color(0xffFCD435);
+  final Color yellowLight = Color(0xffFCF2D4);
+  final Color grey = Color(0xffA9A9A9);
+  final Color greyLight100 = Color(0xffD1D1D1);
+  final Color greyLight200 = Color(0xffF0F0F0);
+  final Color greyLight300 = Color(0xffF4F4F4);
   final Color white = Color(0xffffffff);
-  final Color gray = Color(0xffa5a6ae);
-  final Color lightGray = Color(0xfff7f7f7);
-  final Color darkGray = Color(0xff676870);
-  final Color black = Color(0xff020306);
-
-  final Color azure = Color(0xff27928d);
+  final Color black = Color(0xff3C3C3C);
 }

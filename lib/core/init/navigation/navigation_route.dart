@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fluttermvvmtemplate/views/home/home_view.dart';
 
-import '../../../view/authenticate/test/view/test_view.dart';
+// import '../../../view/authenticate/test/view/test_view.dart';
 import '../../components/card/not_found_navigation_widget.dart';
 import '../../constants/navigation/navigation_constants.dart';
 
@@ -13,8 +14,8 @@ class NavigationRoute {
 
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
-      case NavigationConstants.TEST_VIEW:
-        return normalNavigate(TestsView());
+      case NavigationConstants.HOME_VIEW:
+        return normalNavigate(HomeView());
       default:
         return MaterialPageRoute(
           builder: (context) => NotFoundNavigationWidget(),
