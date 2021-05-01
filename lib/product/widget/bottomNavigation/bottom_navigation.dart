@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttermvvmtemplate/core/extension/context_extension.dart';
+import 'package:fluttermvvmtemplate/views/book_detail/book_detail_view.dart';
 import 'package:fluttermvvmtemplate/views/home/home_view.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -10,9 +11,10 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   static List<Widget> _widgetOptions = <Widget>[
     HomeView(),
+    BookDetail(),
     Center(child: Text('Keşfet...')),
     Center(child: Text('Kitaplar...')),
     Center(child: Text('Chart Menu...')),
