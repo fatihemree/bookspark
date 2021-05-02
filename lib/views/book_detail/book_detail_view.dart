@@ -25,50 +25,112 @@ class BookDetail extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        children: [
-          buildBookImages(context),
-          Container(
-            padding: EdgeInsets.symmetric(
-                vertical: context.height * .03,
-                horizontal: context.width * .15),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    textButton(context),
-                    Container(
-                        height: context.height * .1,
-                        child: VerticalDivider(
-                          color: context.colors.secondaryVariant,
-                          thickness: 1,
-                        )),
-                    textButton(context),
-                  ],
-                ),
-                Divider(
-                  color: context.colors.secondaryVariant,
-                  thickness: 1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    textButton(context),
-                    Container(
-                        height: context.height * .1,
-                        child: VerticalDivider(
-                          color: context.colors.secondaryVariant,
-                          thickness: 1,
-                        )),
-                    textButton(context),
-                  ],
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            buildBookImages(context),
+            Container(
+              padding: EdgeInsets.symmetric(
+                  vertical: context.height * .03,
+                  horizontal: context.width * .15),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      textButton(context),
+                      Container(
+                          height: context.height * .1,
+                          child: VerticalDivider(
+                            color: context.colors.secondaryVariant,
+                            thickness: 1,
+                          )),
+                      textButton(context),
+                    ],
+                  ),
+                  Divider(
+                    color: context.colors.secondaryVariant,
+                    thickness: 1,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      textButton(context),
+                      Container(
+                          height: context.height * .1,
+                          child: VerticalDivider(
+                            color: context.colors.secondaryVariant,
+                            thickness: 1,
+                          )),
+                      textButton(context),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          )
-        ],
+            Padding(
+              padding: EdgeInsets.only(bottom: context.height * .05),
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                    vertical: context.height * .03,
+                    horizontal: context.width * .15),
+                color: Colors.white,
+                width: context.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Künye',
+                      style: context.textTheme.bodyText1
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    Divider(),
+                    bookTag(context),
+                    bookTag(context),
+                    bookTag(context),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(
+                  vertical: context.height * .03,
+                  horizontal: context.width * .15),
+              color: Colors.white,
+              width: context.width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'Hakkında',
+                    style: context.textTheme.bodyText1
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  Divider(),
+                  Text(
+                      '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.''')
+                ],
+              ),
+            )
+          ],
+        ),
       ),
+    );
+  }
+
+  RichText bookTag(BuildContext context) {
+    return RichText(
+      textAlign: TextAlign.center,
+      text: TextSpan(
+          text: 'Adı: ',
+          children: <TextSpan>[
+            TextSpan(
+                text: 'İçimizdeki Şeytan', style: context.textTheme.subtitle2)
+          ],
+          style: context.textTheme.subtitle2
+              .copyWith(fontWeight: FontWeight.bold)),
     );
   }
 
@@ -88,11 +150,6 @@ class BookDetail extends StatelessWidget {
               ],
               style: context.textTheme.subtitle2),
         ),
-        // Text(
-        //   'Okuyanlar\n78',
-        //   style: context.textTheme.subtitle1,
-        //   textAlign: TextAlign.center,
-        // ),
         Icon(
           Icons.chevron_right_rounded,
           color: context.colors.secondaryVariant,

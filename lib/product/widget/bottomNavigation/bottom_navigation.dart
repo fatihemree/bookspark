@@ -25,7 +25,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      extendBody: true,
+      extendBody: false,
       bottomNavigationBar: Container(
         height: context.height * .08,
         color: context.colors.surface,
