@@ -46,6 +46,11 @@ extension PaddingExtensionSymetric on BuildContext {
       EdgeInsets.symmetric(horizontal: mediumValue);
   EdgeInsets get paddingHighHorizontal =>
       EdgeInsets.symmetric(horizontal: highValue);
+
+  EdgeInsets get paddingContainerContentDefault =>
+      EdgeInsets.symmetric(vertical: height * .03, horizontal: width * .15);
+  EdgeInsets get paddingContainerDefault =>
+      EdgeInsets.symmetric(vertical: height * .03);
 }
 
 extension PageExtension on BuildContext {
@@ -55,4 +60,9 @@ extension PageExtension on BuildContext {
 extension DurationExtension on BuildContext {
   Duration get lowDuration => Duration(milliseconds: 500);
   Duration get normalDuration => Duration(seconds: 1);
+}
+
+extension ShadowExtension on BuildContext {
+  BoxShadow get shadowContainerDefault => BoxShadow(
+      blurRadius: 10, color: Colors.black.withOpacity(.025), spreadRadius: 10);
 }
