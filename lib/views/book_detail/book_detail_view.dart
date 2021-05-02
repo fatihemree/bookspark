@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttermvvmtemplate/core/components/text/auto_locale_text.dart';
 import 'package:fluttermvvmtemplate/product/widget/card/shadowContainer.dart';
 import '../../core/extension/context_extension.dart';
+import '../../product/widget/bottomSheet/bottomSheet.dart';
 
 class BookDetail extends StatelessWidget {
   final String imgUrl;
@@ -40,24 +41,28 @@ class BookDetail extends StatelessWidget {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            buildBookImages(context, imgUrl),
-            Container(
-              padding: EdgeInsets.symmetric(
-                  vertical: context.height * .03,
-                  horizontal: context.width * .15),
-              child: bookStatisticsArea(context),
-            ),
-            ShadowContainer(
-              child: bookTagArea(context),
-            ),
-            ShadowContainer(
-              child: bookAbout(context, about),
-            )
-          ],
-        ),
+      body: pageContent(context),
+    );
+  }
+
+  SingleChildScrollView pageContent(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          buildBookImages(context, imgUrl),
+          Container(
+            padding: EdgeInsets.symmetric(
+                vertical: context.height * .03,
+                horizontal: context.width * .15),
+            child: bookStatisticsArea(context),
+          ),
+          ShadowContainer(
+            child: bookTagArea(context),
+          ),
+          ShadowContainer(
+            child: bookAbout(context, about),
+          )
+        ],
       ),
     );
   }
@@ -93,7 +98,10 @@ class BookDetail extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            textButton(context, 'Okuyonlar', '78'),
+            BottomSheeet(
+              child: textButton(context, 'Okuyonlar', '78'),
+              bottomSheet: Text('deneme'),
+            ),
             Container(
                 height: context.height * .1,
                 child: VerticalDivider(
