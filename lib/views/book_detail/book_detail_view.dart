@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermvvmtemplate/core/components/text/auto_locale_text.dart';
 import 'package:fluttermvvmtemplate/product/widget/card/shadowContainer.dart';
 import '../../core/extension/context_extension.dart';
 
 class BookDetail extends StatelessWidget {
   final String imgUrl;
-  const BookDetail({Key key, this.imgUrl}) : super(key: key);
+  final String about;
+  final Object tag; // model ekleme
+  BookDetail({
+    Key key,
+    @required this.imgUrl,
+    @required this.about,
+    @required this.tag,
+  }) : super(key: key);
 
+  static List<Example> deneme = [
+    Example(name: 'Adi', value: 'İçimizdeki Şeytan'),
+    Example(name: 'Adi', value: 'İçimizdeki Şeytan'),
+    Example(name: 'Adi', value: 'İçimizdeki Şeytan'),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +54,7 @@ class BookDetail extends StatelessWidget {
               child: bookTagArea(context),
             ),
             ShadowContainer(
-              child: bookAbout(context),
+              child: bookAbout(context, about),
             )
           ],
         ),
@@ -60,9 +73,16 @@ class BookDetail extends StatelessWidget {
               context.textTheme.bodyText1.copyWith(fontWeight: FontWeight.bold),
         ),
         Divider(),
-        bookTag(context),
-        bookTag(context),
-        bookTag(context),
+        ListView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          addAutomaticKeepAlives: true,
+          itemCount: deneme.length,
+          itemBuilder: (context, index) => Align(
+            alignment: Alignment.centerLeft,
+            child: bookTag(context, deneme[index]),
+          ),
+        ),
       ],
     );
   }
@@ -73,14 +93,14 @@ class BookDetail extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            textButton(context),
+            textButton(context, 'Okuyonlar', '78'),
             Container(
                 height: context.height * .1,
                 child: VerticalDivider(
                   color: context.colors.secondaryVariant,
                   thickness: 1,
                 )),
-            textButton(context),
+            textButton(context, 'Alıntılar', '34'),
           ],
         ),
         Divider(
@@ -90,21 +110,21 @@ class BookDetail extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            textButton(context),
+            textButton(context, 'Ort. Gün', '12'),
             Container(
                 height: context.height * .1,
                 child: VerticalDivider(
                   color: context.colors.secondaryVariant,
                   thickness: 1,
                 )),
-            textButton(context),
+            textButton(context, 'Ort. Sayfa', '34/Gün'),
           ],
         ),
       ],
     );
   }
 
-  Column bookAbout(BuildContext context) {
+  Column bookAbout(BuildContext context, String about) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -115,52 +135,61 @@ class BookDetail extends StatelessWidget {
               context.textTheme.bodyText1.copyWith(fontWeight: FontWeight.bold),
         ),
         Divider(),
-        Text(
-            '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.''')
+        Text(about ?? '...')
       ],
     );
   }
 
-  RichText bookTag(BuildContext context) {
+  RichText bookTag(BuildContext context, Example item) {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-          text: 'Adı: ',
+          // text: item.name != null ? '$item.name: ' : 'deneme',
+          text: '${item.name} : ',
           children: <TextSpan>[
             TextSpan(
-                text: 'İçimizdeki Şeytan', style: context.textTheme.subtitle2)
+              text: item.value ?? 'deneme',
+              style: context.textTheme.subtitle2,
+            )
           ],
           style: context.textTheme.subtitle2
               .copyWith(fontWeight: FontWeight.bold)),
     );
   }
 
-  Widget textButton(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        RichText(
-          textAlign: TextAlign.center,
-          text: TextSpan(
-              text: 'Okuyanlar',
-              children: <TextSpan>[
-                TextSpan(
-                    text: '\n78',
-                    style: context.textTheme.subtitle2
-                        .copyWith(fontWeight: FontWeight.bold))
-              ],
-              style: context.textTheme.subtitle2),
-        ),
-        Icon(
-          Icons.chevron_right_rounded,
-          color: context.colors.secondaryVariant,
-        )
-      ],
+  Widget textButton(BuildContext context, String title, String value) {
+    return Container(
+      width: context.width * .3,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Column(
+            children: [
+              AutoLocaleText(
+                value: title,
+                style: context.textTheme.subtitle2,
+                textAlign: TextAlign.center,
+              ),
+              AutoLocaleText(
+                value: value,
+                style: context.textTheme.subtitle2
+                    .copyWith(fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+          Icon(
+            Icons.chevron_right_rounded,
+            color: context.colors.secondaryVariant,
+          )
+        ],
+      ),
     );
   }
 
   Center buildBookImages(BuildContext context, String imgUrl) {
-    const _defaultBookImg = 'asset/image/bookDefault.png';
+    const _defaultBookImg = 'asset/image/no_img.jpg';
     return Center(
       child: Padding(
         padding: EdgeInsets.only(top: context.height * .020),
@@ -183,5 +212,24 @@ class BookDetail extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class Example {
+  String name;
+  String value;
+
+  Example({this.name, this.value});
+
+  Example.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    value = json['value'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['name'] = this.name;
+    data['value'] = this.value;
+    return data;
   }
 }
