@@ -99,8 +99,12 @@ class BookDetail extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             BottomSheeet(
-              child: textButton(context, 'Okuyonlar', '78'),
-              bottomSheet: Text('deneme'),
+              child: textButton(context, 'Okuyanlar', '78'),
+              headerTitle: 'Okuyanlar',
+              bottomSheet: Container(
+                child: Text('fatih'),
+              ),
+              // headerTitle: 'Okuyanlar',
             ),
             Container(
                 height: context.height * .1,
@@ -131,6 +135,25 @@ class BookDetail extends StatelessWidget {
       ],
     );
   }
+
+  // Container headerContent(BuildContext context) {
+  //   return Container(
+  //     alignment: Alignment.centerLeft,
+  //     padding: context.paddingNormal,
+  //     decoration: BoxDecoration(color: context.colors.surface, boxShadow: [
+  //       BoxShadow(
+  //           color: Colors.black.withOpacity(0.050),
+  //           offset: Offset(0, 10),
+  //           blurRadius: 10,
+  //           spreadRadius: 0.1)
+  //     ]),
+  //     child: Text(
+  //       'Okuyanlar',
+  //       style:
+  //           context.textTheme.subtitle1.copyWith(fontWeight: FontWeight.bold),
+  //     ),
+  //   );
+  // }
 
   Column bookAbout(BuildContext context, String about) {
     return Column(
