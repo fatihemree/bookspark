@@ -34,6 +34,8 @@ class BottomSheetWidget extends StatelessWidget {
       BuildContext context, Widget child, String title, double heightPercent) {
     return showModalBottomSheet(
         context: context,
+        backgroundColor: Colors.transparent,
+        // clipBehavior: Clip.hardEdge,
         builder: (context) => Container(
               decoration: boxDecoration(context),
               height: context.height * heightPercent,
@@ -100,13 +102,18 @@ class BottomSheetWidget extends StatelessWidget {
       child: Container(
         alignment: Alignment.centerLeft,
         padding: context.paddingNormal,
-        decoration: BoxDecoration(color: context.colors.surface, boxShadow: [
-          BoxShadow(
-              color: Colors.black.withOpacity(0.050),
-              offset: Offset(0, 10),
-              blurRadius: 10,
-              spreadRadius: 0.1)
-        ]),
+        decoration: BoxDecoration(
+          color: context.colors.surface,
+          borderRadius:
+              BorderRadius.vertical(top: Radius.circular(context.width * .03)),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black.withOpacity(0.050),
+                offset: Offset(0, 10),
+                blurRadius: 10,
+                spreadRadius: 0.1)
+          ],
+        ),
         child: Text(
           title,
           style:
