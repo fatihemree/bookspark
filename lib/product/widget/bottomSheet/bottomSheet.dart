@@ -1,32 +1,62 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import '../../../core/extension/context_extension.dart';
 
-class BottomSheeet extends StatelessWidget {
+class BottomSheetWidget extends StatelessWidget {
   final Widget child;
   final Widget bottomSheet;
   final String headerTitle;
+  final double heightPercent;
+  final bool onNavigation;
+
   bool _isHeader = false;
-  BottomSheeet({
+  BottomSheetWidget({
     Key key,
     @required this.child,
     @required this.bottomSheet,
     this.headerTitle,
+    this.heightPercent = 0.6,
+    this.onNavigation = true,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: child,
-      onTap: () => _buildShowBottomSheet(context, bottomSheet, headerTitle),
-    );
+        child: child,
+        onTap: () => onNavigation
+            ? _buildShowBottomSheetOnNavigation(
+                context, bottomSheet, headerTitle, heightPercent)
+            : _buildShowBottomSheet(
+                context, bottomSheet, headerTitle, heightPercent));
+  }
+
+  Future<void> _buildShowBottomSheetOnNavigation(
+      BuildContext context, Widget child, String title, double heightPercent) {
+    return showModalBottomSheet(
+        context: context,
+        builder: (context) => Container(
+              decoration: boxDecoration(context),
+              height: context.height * heightPercent,
+              width: double.infinity,
+              child: Column(
+                children: [
+                  touchSwipePointer(context),
+                  headerTitle != null
+                      ? headerContent(context, title)
+                      : SizedBox(),
+                  child,
+                ],
+              ),
+            ));
   }
 
   PersistentBottomSheetController _buildShowBottomSheet(
-      BuildContext context, Widget child, String title) {
+      BuildContext context, Widget child, String title, double heightPercent) {
     return showBottomSheet(
         context: context,
         builder: (context) => Container(
               decoration: boxDecoration(context),
-              height: context.height * .6,
+              height: context.height * heightPercent,
               width: double.infinity,
               child: Column(
                 children: [

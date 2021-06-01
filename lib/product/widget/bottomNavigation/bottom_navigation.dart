@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttermvvmtemplate/core/extension/context_extension.dart';
+import 'package:fluttermvvmtemplate/product/widget/bottomSheet/bottomSheet.dart';
 import 'package:fluttermvvmtemplate/views/book_detail/book_detail_view.dart';
 // import 'package:fluttermvvmtemplate/views/oldHome/home_view.dart';
 import 'package:fluttermvvmtemplate/views/home/home_view.dart';
@@ -37,9 +38,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
           children: [
             bottomNavigationBarItem(context, 'home', 0),
             bottomNavigationBarItem(context, 'discovery', 1),
-            bottomNavigationBarItem(context, 'booksMenu', 2),
-            bottomNavigationBarItem(context, 'chartMenu', 3),
-            bottomNavigationBarItem(context, 'user', 4),
+            addOpenSheetPage(context, 'add'),
+            bottomNavigationBarItem(context, 'chartMenu', 2),
+            bottomNavigationBarItem(context, 'user', 3),
           ],
         ),
       ),
@@ -66,7 +67,32 @@ class _BottomNavigationState extends State<BottomNavigation> {
           color: _selectedIndex == index
               ? context.colors.primaryVariant
               : context.colors.secondary,
+          width: 24,
+          height: 24,
         ),
+      ),
+    );
+  }
+
+  Expanded addOpenSheetPage(BuildContext context, String icon) {
+    return Expanded(
+      child: BottomSheetWidget(
+        child: SvgPicture.asset(
+          'asset/svg/${icon}.svg',
+          // color: _selectedIndex == index
+          // ? context.colors.primaryVariant
+          // :
+          color: context.colors.secondary,
+          width: 24,
+          height: 24,
+        ),
+        heightPercent: .4,
+        // isOpen: (isOpen)=> ,
+        headerTitle: 'Kitap Ekle',
+        bottomSheet: Container(
+          child: Text('fatih'),
+        ),
+        // headerTitle: 'Okuyanlar',
       ),
     );
   }

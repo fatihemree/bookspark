@@ -98,7 +98,7 @@ class BookDetail extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            BottomSheeet(
+            BottomSheetWidget(
               child: textButton(context, 'Okuyanlar', '78'),
               headerTitle: 'Okuyanlar',
               bottomSheet: Container(
