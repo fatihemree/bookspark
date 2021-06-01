@@ -14,6 +14,8 @@ extension MediaQueryExtension on BuildContext {
   double get normalValue => height * 0.02;
   double get mediumValue => height * 0.04;
   double get highValue => height * 0.1;
+  double get verticalDefaultValue => width * .035;
+  double get horizontalDefaultValue => width * .075;
 }
 
 extension ThemeExtension on BuildContext {
@@ -51,6 +53,12 @@ extension PaddingExtensionSymetric on BuildContext {
       EdgeInsets.symmetric(vertical: height * .03, horizontal: width * .15);
   EdgeInsets get paddingContainerDefault =>
       EdgeInsets.symmetric(vertical: height * .03);
+  EdgeInsets get paddingDefaultAppAll =>
+      EdgeInsets.symmetric(horizontal: width * .075, vertical: width * .035);
+  EdgeInsets get paddingDefaultAppVertical =>
+      EdgeInsets.symmetric(vertical: width * .035);
+  EdgeInsets get paddingDefaultAppHorizontal =>
+      EdgeInsets.symmetric(horizontal: width * .075);
 }
 
 extension PageExtension on BuildContext {
