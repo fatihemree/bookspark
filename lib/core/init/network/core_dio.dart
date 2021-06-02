@@ -2,18 +2,17 @@ import 'dart:io';
 
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 
-import 'package:fluttermvvmtemplate/core/base/model/base_error.dart';
-import 'package:fluttermvvmtemplate/core/base/model/base_model.dart';
-import 'package:fluttermvvmtemplate/core/constants/enums/http_request_enum.dart';
-import 'package:fluttermvvmtemplate/core/extension/network_exntension.dart';
+import '../../base/model/base_error.dart';
+import '../../base/model/base_model.dart';
+import '../../constants/enums/http_request_enum.dart';
+import '../../extension/network_exntension.dart';
 import 'ICoreDio.dart';
 import 'IResponseModel.dart';
 
 part './network_core/core_operations.dart';
 
-class CoreDio with DioMixin implements Dio, ICoreDio {
+class CoreDio with DioMixin implements Dio, ICoreDioNullSafety {
   @override
   final BaseOptions options;
 
@@ -24,13 +23,13 @@ class CoreDio with DioMixin implements Dio, ICoreDio {
   }
 
   @override
-  Future<IResponseModel<R>> fetch<R, T extends BaseModel>(String path,
+  Future<IResponseModel<R>> send<R, T extends BaseModel>(String path,
       {required HttpTypes type,
       required T parseModel,
       dynamic data,
       Map<String, dynamic>? queryParameters,
       void Function(int, int)? onReceiveProgress}) async {
-    final Response<dynamic> response = await request(path,
+    final response = await request(path,
         data: data, options: Options(method: type.rawValue));
     switch (response.statusCode) {
       case HttpStatus.ok:

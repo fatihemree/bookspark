@@ -69,8 +69,10 @@ class AppThemeLight extends AppTheme with ILightTheme {
             textThemeLight!.headline5.copyWith(color: colorSchemeLight!.black),
         headline6:
             textThemeLight!.headline5.copyWith(color: colorSchemeLight!.black),
-        bodyText1: textThemeLight!.body1.copyWith(color: colorSchemeLight!.black),
-        bodyText2: textThemeLight!.body2.copyWith(color: colorSchemeLight!.black),
+        bodyText1:
+            textThemeLight!.body1.copyWith(color: colorSchemeLight!.black),
+        bodyText2:
+            textThemeLight!.body2.copyWith(color: colorSchemeLight!.black),
         subtitle1:
             textThemeLight!.subtitle1.copyWith(color: colorSchemeLight!.black),
         subtitle2:

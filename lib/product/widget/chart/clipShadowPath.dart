@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-@immutable
+// @immutable
 class ClipShadowPath extends StatelessWidget {
   final Shadow shadow;
   final CustomClipper<Path> clipper;

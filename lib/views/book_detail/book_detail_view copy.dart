@@ -9,7 +9,7 @@ class BookDetail extends StatelessWidget {
   final String? about;
   final Object? tag; // model ekleme
   BookDetail({
-    Key?? key,
+    Key? key,
     required this.imgUrl,
     required this.about,
     required this.tag,
@@ -31,7 +31,7 @@ class BookDetail extends StatelessWidget {
         centerTitle: true,
         title: Text(
           'İçimizdeki Şeytan',
-          style: context.textTheme.headline6!!.copyWith(
+          style: context.textTheme.headline6!.copyWith(
               fontWeight: FontWeight.bold, fontSize: context.width * .05),
         ),
         actions: [
@@ -74,8 +74,8 @@ class BookDetail extends StatelessWidget {
       children: [
         Text(
           'Künye',
-          style:
-              context.textTheme.bodyText1!.copyWith(fontWeight: FontWeight.bold),
+          style: context.textTheme.bodyText1!
+              .copyWith(fontWeight: FontWeight.bold),
         ),
         Divider(),
         ListView.builder(
@@ -162,8 +162,8 @@ class BookDetail extends StatelessWidget {
       children: [
         Text(
           'Hakkında',
-          style:
-              context.textTheme.bodyText1!.copyWith(fontWeight: FontWeight.bold),
+          style: context.textTheme.bodyText1!
+              .copyWith(fontWeight: FontWeight.bold),
         ),
         Divider(),
         Text(about ?? '...')

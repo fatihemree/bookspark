@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/date_symbol_data_local.dart';
+import 'package:kartal/kartal.dart';
 import 'package:provider/provider.dart';
 
 import 'core/constants/app/app_constants.dart';
@@ -10,18 +10,27 @@ import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider_list.dart';
 import 'core/init/notifier/theme_notifer.dart';
-import './product/widget/bottomNavigation/bottom_navigation.dart';
+import 'product/widget/bottomNavigation/bottom_navigation.dart';
+// import 'view/home/burger/view/burgers_view.dart';
 
-void main() {
+Future<void> main() async {
+  await _init();
+  runApp(MultiProvider(
+    providers: [...ApplicationProvider.instance!.dependItems],
+    child: EasyLocalization(
+      child: MyApp(),
+      supportedLocales: LanguageManager.instance.supportedLocales,
+      path: ApplicationConstants.LANG_ASSET_PATH,
+      startLocale: LanguageManager.instance.enLocale,
+    ),
+  ));
+}
+
+Future<void> _init() async {
   WidgetsFlutterBinding.ensureInitialized();
-  LocaleManager.prefrencesInit();
-  initializeDateFormatting('tr', null).then((value) => runApp(MultiProvider(
-        providers: [...ApplicationProvider.instance!.dependItems],
-        child: EasyLocalization(
-            child: MyApp(),
-            supportedLocales: LanguageManager.instance!.supportedLocales,
-            path: ApplicationConstants.LANG_ASSET_PATH),
-      )));
+  await LocaleManager.prefrencesInit();
+  await EasyLocalization.ensureInitialized();
+  await DeviceUtility.instance?.initPackageInfo();
 }
 
 class MyApp extends StatelessWidget {
@@ -29,8 +38,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
+      theme: context.watch<ThemeNotifier>().currentTheme,
       home: BottomNavigation(),
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );

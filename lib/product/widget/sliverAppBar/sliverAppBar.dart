@@ -8,10 +8,10 @@ class CustomSliderAppBar extends StatefulWidget {
 }
 
 class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
-  late ScrollController? _controller;
+  // late ScrollController? _controller;
   @override
   void initState() {
-    _controller = ScrollController();
+    // _controller = ScrollController();
     // TODO: implement initState
     super.initState();
   }
@@ -19,7 +19,7 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      controller: _controller,
+      // controller: _controller,
       slivers: <Widget>[
         SliverAppBar(
           pinned: true,
@@ -37,11 +37,9 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
                 style: context.textTheme.subtitle1,
               ),
               Opacity(
-                opacity: _controller!.offset / 210 < 1
-                    ? (_controller!.offset / 210)
-                    : 1,
+                opacity: 1,
                 child: Text(
-                  '${_controller!.offset}',
+                  'abc',
                   style: context.textTheme.subtitle2,
                 ),
               )
