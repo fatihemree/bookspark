@@ -3,11 +3,11 @@ import '../../../core/extension/context_extension.dart';
 
 class ShadowContainer extends StatelessWidget {
   final Widget child;
-  final EdgeInsets padding;
-  final EdgeInsets contentPadding;
+  final EdgeInsets? padding;
+  final EdgeInsets? contentPadding;
   ShadowContainer({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
     this.padding,
     this.contentPadding,
   }) : assert(padding == null && contentPadding == null);

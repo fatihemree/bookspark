@@ -5,7 +5,7 @@ import 'app_theme.dart';
 import 'light/light_theme_interface.dart';
 
 class AppThemeLight extends AppTheme with ILightTheme {
-  static AppThemeLight _instance;
+  static AppThemeLight? _instance;
   static AppThemeLight get instance {
     return _instance ??= AppThemeLight._init();
   }
@@ -49,7 +49,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
     return TabBarTheme(
       labelPadding: insets.lowPaddingAll,
       labelColor: _appColorScheme.onSecondary,
-      labelStyle: textThemeLight.headline5,
+      labelStyle: textThemeLight!.headline5,
       unselectedLabelColor: _appColorScheme.onSecondary.withOpacity(0.2),
       // unselectedLabelStyle: textThemeLight.headline4.copyWith(color: colorSchemeLight.red),
     );
@@ -58,40 +58,40 @@ class AppThemeLight extends AppTheme with ILightTheme {
   TextTheme textTheme() {
     return ThemeData.light().textTheme.copyWith(
         headline1:
-            textThemeLight.headline1.copyWith(color: colorSchemeLight.black),
+            textThemeLight!.headline1.copyWith(color: colorSchemeLight!.black),
         headline2:
-            textThemeLight.headline2.copyWith(color: colorSchemeLight.black),
+            textThemeLight!.headline2.copyWith(color: colorSchemeLight!.black),
         headline3:
-            textThemeLight.headline3.copyWith(color: colorSchemeLight.black),
+            textThemeLight!.headline3.copyWith(color: colorSchemeLight!.black),
         headline4:
-            textThemeLight.headline4.copyWith(color: colorSchemeLight.black),
+            textThemeLight!.headline4.copyWith(color: colorSchemeLight!.black),
         headline5:
-            textThemeLight.headline5.copyWith(color: colorSchemeLight.black),
+            textThemeLight!.headline5.copyWith(color: colorSchemeLight!.black),
         headline6:
-            textThemeLight.headline5.copyWith(color: colorSchemeLight.black),
-        bodyText1: textThemeLight.body1.copyWith(color: colorSchemeLight.black),
-        bodyText2: textThemeLight.body2.copyWith(color: colorSchemeLight.black),
+            textThemeLight!.headline5.copyWith(color: colorSchemeLight!.black),
+        bodyText1: textThemeLight!.body1.copyWith(color: colorSchemeLight!.black),
+        bodyText2: textThemeLight!.body2.copyWith(color: colorSchemeLight!.black),
         subtitle1:
-            textThemeLight.subtitle1.copyWith(color: colorSchemeLight.black),
+            textThemeLight!.subtitle1.copyWith(color: colorSchemeLight!.black),
         subtitle2:
-            textThemeLight.subtitle2.copyWith(color: colorSchemeLight.black),
-        overline: textThemeLight.headline3);
+            textThemeLight!.subtitle2.copyWith(color: colorSchemeLight!.black),
+        overline: textThemeLight!.headline3);
   }
 
   ColorScheme get _appColorScheme {
     return ColorScheme(
-        primary: colorSchemeLight.yellowLight,
-        primaryVariant: colorSchemeLight.yellow,
-        background: colorSchemeLight.greyLight300,
-        onBackground: colorSchemeLight.black,
-        secondary: colorSchemeLight.greyLight100,
-        secondaryVariant: colorSchemeLight.grey,
-        surface: colorSchemeLight.white,
-        error: colorSchemeLight.red,
-        onError: colorSchemeLight.redLight,
-        onPrimary: colorSchemeLight.black,
-        onSecondary: colorSchemeLight.grey,
-        onSurface: colorSchemeLight.grey,
+        primary: colorSchemeLight!.yellowLight,
+        primaryVariant: colorSchemeLight!.yellow,
+        background: colorSchemeLight!.greyLight300,
+        onBackground: colorSchemeLight!.black,
+        secondary: colorSchemeLight!.greyLight100,
+        secondaryVariant: colorSchemeLight!.grey,
+        surface: colorSchemeLight!.white,
+        error: colorSchemeLight!.red,
+        onError: colorSchemeLight!.redLight,
+        onPrimary: colorSchemeLight!.black,
+        onSecondary: colorSchemeLight!.grey,
+        onSurface: colorSchemeLight!.grey,
         brightness: Brightness.light);
   }
 }

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../core/extension/context_extension.dart';
 
 class CalendarGrid extends StatelessWidget {
-  const CalendarGrid({Key key}) : super(key: key);
+  const CalendarGrid({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var taskItems = AnnualTaskItemHelper.generateAnnualTask();
@@ -42,15 +42,15 @@ class CalendarGrid extends StatelessWidget {
 // ];
 
 class AnnualTaskItemHelper {
-  static List<AnnualTaskItem> generateAnnualTask({int year, int sampleSize}) {
+  static List<AnnualTaskItem> generateAnnualTask({int? year, int? sampleSize}) {
     var rnd = new Random();
     sampleSize = sampleSize ?? max(80, min(365, rnd.nextInt(200)));
     year ??= DateTime.now().year;
     DateTime prevDate = DateTime(year, 1, 1);
     return List.generate(sampleSize, (idx) {
       int maxDiff =
-          (365 - prevDate.difference(DateTime(year, 12, 31)).inDays) ~/
-              (sampleSize - idx);
+          (365 - prevDate.difference(DateTime(year!, 12, 31)).inDays) ~/
+              (sampleSize! - idx);
       prevDate = prevDate.add(Duration(days: rnd.nextInt(maxDiff) + 1));
       return AnnualTaskItem(prevDate, rnd.nextDouble());
     });
@@ -62,7 +62,7 @@ class AnnualTaskItemHelper {
     return items
         .map((e) => AnnualTaskColorItem(
               e.date,
-              proceeding: e.proceeding,
+              proceeding: e.proceeding!,
               color: colors[Random().nextInt(colors.length)],
             ))
         .toList();

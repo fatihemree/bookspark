@@ -10,7 +10,7 @@ class Calendar extends StatefulWidget {
 class _CalendarState extends State<Calendar> {
   CalendarFormat _calendarFormat = CalendarFormat.week;
   DateTime _focusedDay = DateTime.now();
-  DateTime _selectedDay = null;
+  DateTime? _selectedDay = null;
   static DateTime kNow = DateTime.now();
   static DateTime kFirstDay = DateTime(kNow.year, kNow.month - 3, kNow.day);
   static DateTime kLastDay = DateTime(kNow.year, kNow.month + 3, kNow.day);
@@ -22,7 +22,7 @@ class _CalendarState extends State<Calendar> {
       focusedDay: _focusedDay,
       calendarFormat: _calendarFormat,
       calendarStyle: CalendarStyle(
-        todayTextStyle: context.textTheme.subtitle1.copyWith(
+        todayTextStyle: context.textTheme.subtitle1!.copyWith(
           color: context.colors.primaryVariant,
           fontWeight: FontWeight.bold,
         ),

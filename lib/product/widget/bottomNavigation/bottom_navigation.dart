@@ -7,7 +7,7 @@ import 'package:fluttermvvmtemplate/views/book_detail/book_detail_view.dart';
 import 'package:fluttermvvmtemplate/views/home/home_view.dart';
 
 class BottomNavigation extends StatefulWidget {
-  BottomNavigation({Key key}) : super(key: key);
+  BottomNavigation({Key? key}) : super(key: key);
   @override
   _BottomNavigationState createState() => _BottomNavigationState();
 }
@@ -56,7 +56,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   Expanded bottomNavigationBarItem(BuildContext context, String icon, int index,
-      {Color color}) {
+      {Color? color}) {
     return Expanded(
       child: GestureDetector(
         onTap: () {

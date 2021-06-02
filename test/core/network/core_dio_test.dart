@@ -6,7 +6,7 @@ import 'core_dio_mock.dart';
 import 'dio_mock_model.dart';
 
 main() {
-  ICoreDioFull service;
+  late ICoreDioFull service;
   setUp(() {
     service = CoreDioMock(BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com'));
   });

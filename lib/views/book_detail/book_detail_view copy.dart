@@ -5,11 +5,11 @@ import '../../core/extension/context_extension.dart';
 import '../../product/widget/bottomSheet/bottomSheet.dart';
 
 class BookDetail extends StatelessWidget {
-  final String imgUrl;
-  final String about;
-  final Object tag; // model ekleme
+  final String? imgUrl;
+  final String? about;
+  final Object? tag; // model ekleme
   BookDetail({
-    Key? key,
+    Key?? key,
     required this.imgUrl,
     required this.about,
     required this.tag,
@@ -31,7 +31,7 @@ class BookDetail extends StatelessWidget {
         centerTitle: true,
         title: Text(
           'İçimizdeki Şeytan',
-          style: context.textTheme.headline6!.copyWith(
+          style: context.textTheme.headline6!!.copyWith(
               fontWeight: FontWeight.bold, fontSize: context.width * .05),
         ),
         actions: [
@@ -75,7 +75,7 @@ class BookDetail extends StatelessWidget {
         Text(
           'Künye',
           style:
-              context.textTheme.bodyText1.copyWith(fontWeight: FontWeight.bold),
+              context.textTheme.bodyText1!.copyWith(fontWeight: FontWeight.bold),
         ),
         Divider(),
         ListView.builder(
@@ -155,7 +155,7 @@ class BookDetail extends StatelessWidget {
   //   );
   // }
 
-  Column bookAbout(BuildContext context, String about) {
+  Column bookAbout(BuildContext context, String? about) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -163,7 +163,7 @@ class BookDetail extends StatelessWidget {
         Text(
           'Hakkında',
           style:
-              context.textTheme.bodyText1.copyWith(fontWeight: FontWeight.bold),
+              context.textTheme.bodyText1!.copyWith(fontWeight: FontWeight.bold),
         ),
         Divider(),
         Text(about ?? '...')
@@ -183,7 +183,7 @@ class BookDetail extends StatelessWidget {
               style: context.textTheme.subtitle2,
             )
           ],
-          style: context.textTheme.subtitle2
+          style: context.textTheme.subtitle2!
               .copyWith(fontWeight: FontWeight.bold)),
     );
   }
@@ -204,7 +204,7 @@ class BookDetail extends StatelessWidget {
               ),
               AutoLocaleText(
                 value: value,
-                style: context.textTheme.subtitle2
+                style: context.textTheme.subtitle2!
                     .copyWith(fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
@@ -219,7 +219,7 @@ class BookDetail extends StatelessWidget {
     );
   }
 
-  Center buildBookImages(BuildContext context, String imgUrl) {
+  Center buildBookImages(BuildContext context, String? imgUrl) {
     const _defaultBookImg = 'asset/image/no_img.jpg';
     return Center(
       child: Padding(
@@ -247,8 +247,8 @@ class BookDetail extends StatelessWidget {
 }
 
 class Example {
-  String name;
-  String value;
+  String? name;
+  String? value;
 
   Example({this.name, this.value});
 

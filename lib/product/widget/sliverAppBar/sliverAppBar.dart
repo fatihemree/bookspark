@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import '../../../core/extension/context_extension.dart';
 
 class CustomSliderAppBar extends StatefulWidget {
-  CustomSliderAppBar({Key key}) : super(key: key);
+  CustomSliderAppBar({Key? key}) : super(key: key);
   @override
   _CustomSliderAppBarState createState() => _CustomSliderAppBarState();
 }
 
 class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
-  late ScrollController _controller;
+  late ScrollController? _controller;
   @override
   void initState() {
     _controller = ScrollController();
@@ -37,11 +37,11 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
                 style: context.textTheme.subtitle1,
               ),
               Opacity(
-                opacity: _controller.offset / 210 < 1
-                    ? (_controller.offset / 210)
+                opacity: _controller!.offset / 210 < 1
+                    ? (_controller!.offset / 210)
                     : 1,
                 child: Text(
-                  '${_controller.offset}',
+                  '${_controller!.offset}',
                   style: context.textTheme.subtitle2,
                 ),
               )

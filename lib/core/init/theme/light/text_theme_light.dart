@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'color_scheme_light.dart';
 
 class TextThemeLight {
-  static TextThemeLight _instace;
-  static TextThemeLight get instance {
+  static TextThemeLight? _instace;
+  static TextThemeLight? get instance {
     if (_instace == null) _instace = TextThemeLight._init();
     return _instace;
   }

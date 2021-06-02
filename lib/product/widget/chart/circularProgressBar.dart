@@ -4,7 +4,7 @@ import '../../../core/extension/context_extension.dart';
 import 'clipShadowPath.dart';
 
 class CircularProgressBar extends StatelessWidget {
-  const CircularProgressBar({Key key}) : super(key: key);
+  const CircularProgressBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class CircularProgressBar extends StatelessWidget {
       child: SfRadialGauge(
           title: GaugeTitle(
               text: 'Bugün Okuma Hedefin',
-              textStyle: context.textTheme.bodyText1.copyWith(
+              textStyle: context.textTheme.bodyText1!.copyWith(
                   fontWeight: FontWeight.bold,
                   color: context.colors.secondaryVariant)),
           backgroundColor: context.colors.surface,
@@ -58,7 +58,7 @@ class CircularProgressBar extends StatelessWidget {
                           children: [
                             Text(
                               '03:00',
-                              style: context.textTheme.headline5
+                              style: context.textTheme.headline5!
                                   .copyWith(fontWeight: FontWeight.bold),
                             ),
                             Text(
@@ -68,7 +68,7 @@ class CircularProgressBar extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(bottom: 8.0),
                               child: Text('Devam ediyor...',
-                                  style: context.textTheme.subtitle1
+                                  style: context.textTheme.subtitle1!
                                       .copyWith(fontWeight: FontWeight.w600)),
                             ),
                           ],

@@ -3,7 +3,7 @@ import 'package:syncfusion_flutter_gauges/gauges.dart';
 import '../../../core/extension/context_extension.dart';
 
 class HomeBookCard extends StatelessWidget {
-  const HomeBookCard({Key key}) : super(key: key);
+  const HomeBookCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +39,10 @@ Widget buildContent(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('İçimizdeki Şeytan',
-            style: context.textTheme.subtitle1
+            style: context.textTheme.subtitle1!
                 .copyWith(fontWeight: FontWeight.bold)),
         Text('Sabahattin Ali',
-            style: context.textTheme.subtitle2
+            style: context.textTheme.subtitle2!
                 .copyWith(color: context.colors.onSecondary))
       ],
     ),
@@ -109,7 +109,7 @@ Widget _getThirdProgressBar(BuildContext context) {
                 verticalAlignment: GaugeAlignment.center,
                 widget: Text(
                   '100%',
-                  style: context.textTheme.bodyText1
+                  style: context.textTheme.bodyText1!
                       .copyWith(fontWeight: FontWeight.bold),
                 ))
           ])

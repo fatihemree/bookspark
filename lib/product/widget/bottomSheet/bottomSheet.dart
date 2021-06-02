@@ -6,15 +6,15 @@ import '../../../core/extension/context_extension.dart';
 class BottomSheetWidget extends StatelessWidget {
   final Widget child;
   final Widget bottomSheet;
-  final String headerTitle;
+  final String? headerTitle;
   final double heightPercent;
   final bool onNavigation;
 
   bool _isHeader = false;
   BottomSheetWidget({
-    Key key,
-    @required this.child,
-    @required this.bottomSheet,
+    Key? key,
+    required this.child,
+    required this.bottomSheet,
     this.headerTitle,
     this.heightPercent = 0.6,
     this.onNavigation = true,
@@ -31,7 +31,7 @@ class BottomSheetWidget extends StatelessWidget {
   }
 
   Future<void> _buildShowBottomSheetOnNavigation(
-      BuildContext context, Widget child, String title, double heightPercent) {
+      BuildContext context, Widget child, String? title, double heightPercent) {
     return showModalBottomSheet(
         context: context,
         backgroundColor: Colors.transparent,
@@ -44,7 +44,7 @@ class BottomSheetWidget extends StatelessWidget {
                 children: [
                   touchSwipePointer(context),
                   headerTitle != null
-                      ? headerContent(context, title)
+                      ? headerContent(context, title!)
                       : SizedBox(),
                   child,
                 ],
@@ -53,7 +53,7 @@ class BottomSheetWidget extends StatelessWidget {
   }
 
   PersistentBottomSheetController _buildShowBottomSheet(
-      BuildContext context, Widget child, String title, double heightPercent) {
+      BuildContext context, Widget child, String? title, double heightPercent) {
     return showBottomSheet(
         context: context,
         builder: (context) => Container(
@@ -64,7 +64,7 @@ class BottomSheetWidget extends StatelessWidget {
                 children: [
                   touchSwipePointer(context),
                   headerTitle != null
-                      ? headerContent(context, title)
+                      ? headerContent(context, title!)
                       : SizedBox(),
                   child,
                 ],
@@ -117,7 +117,7 @@ class BottomSheetWidget extends StatelessWidget {
         child: Text(
           title,
           style:
-              context.textTheme.subtitle1.copyWith(fontWeight: FontWeight.bold),
+              context.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold),
         ),
       ),
     );

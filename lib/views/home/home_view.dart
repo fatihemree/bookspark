@@ -7,7 +7,7 @@ import '../../core/extension/context_extension.dart';
 import '../../product/widget/card/homeBookCard.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key key}) : super(key: key);
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +45,13 @@ class HomeView extends StatelessWidget {
                           ),
                           Text(
                             '30 Mayıs',
-                            style: context.textTheme.bodyText2.copyWith(
+                            style: context.textTheme.bodyText2!.copyWith(
                                 color: context.colors.secondaryVariant),
                           ),
                         ],
                       ),
                       Text('5 pgs',
-                          style: context.textTheme.bodyText1
+                          style: context.textTheme.bodyText1!
                               .copyWith(fontWeight: FontWeight.bold))
                     ],
                   )),
@@ -70,7 +70,7 @@ class HomeView extends StatelessWidget {
         width: double.infinity,
         child: Text(
           text,
-          style: context.textTheme.headline6.copyWith(
+          style: context.textTheme.headline6!.copyWith(
               fontWeight: FontWeight.bold, fontSize: context.width * .05),
           textAlign: TextAlign.left,
         ),
@@ -79,7 +79,7 @@ class HomeView extends StatelessWidget {
   }
 
   Padding buildHeadlineWithIcon(BuildContext context, String text,
-      {Icon icon}) {
+      {Icon? icon}) {
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: context.width * .075, vertical: context.width * .035),
@@ -90,12 +90,12 @@ class HomeView extends StatelessWidget {
         children: [
           Text(
             text,
-            style: context.textTheme.headline6.copyWith(
+            style: context.textTheme.headline6!.copyWith(
                 fontWeight: FontWeight.bold, fontSize: context.width * .05),
             textAlign: TextAlign.left,
           ),
           Icon(
-            icon ?? Icons.chevron_right_sharp,
+            icon as IconData? ?? Icons.chevron_right_sharp,
             color: context.colors.secondaryVariant,
           )
         ],
