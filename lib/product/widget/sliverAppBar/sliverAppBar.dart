@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:fluttermvvmtemplate/core/components/text/auto_locale_text.dart';
 import '../../../core/extension/context_extension.dart';
 
 class CustomSliderAppBar extends StatefulWidget {
@@ -11,13 +12,14 @@ class CustomSliderAppBar extends StatefulWidget {
 
 class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
   late final _controller;
+
   double opacity = 1;
   @override
   void initState() {
     _controller = ScrollController();
     _controller.addListener(() => setState(() {
-          var scrollSetting = _controller.offset / 220;
-          opacity = scrollSetting.isNegative
+          final scrollSetting = _controller.offset / (context.height * 0.35);
+          opacity = scrollSetting < 0
               ? 0
               : scrollSetting > 1
                   ? 1
@@ -28,7 +30,6 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    // print('fa');
     return CustomScrollView(
       controller: _controller,
       slivers: <Widget>[
@@ -37,24 +38,30 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
           expandedHeight: 210.0,
           flexibleSpace: FlexibleSpaceBar(
             background: Container(
-              height: 210,
-              child: Text("Background"),
-              color: Colors.grey,
+              height: context.height * 0.20,
+              child: Column(
+                children: [],
+              ),
+              color: context.colors.background,
             ),
             centerTitle: true,
             title: Column(mainAxisSize: MainAxisSize.min, children: [
-              Text(
-                'İçimizdeki Şeytan',
-                style: context.textTheme.subtitle1,
+              AutoLocaleText(
+                value: 'İçimizdeki Şeytan',
+                style: context.textTheme.bodyText1,
               ),
               AnimatedOpacity(
                 opacity: (1 - opacity),
                 duration: Duration(milliseconds: 300),
                 child: AnimatedContainer(
                   duration: Duration(milliseconds: 300),
-                  height: opacity > 0.7 ? 0 : 20,
+                  height: opacity > 0.7 ? 0 : context.width * 0.05,
                   decoration: BoxDecoration(),
-                  child: Text('emre'),
+                  child: AutoLocaleText(
+                    value: 'Sabahattin Ali',
+                    style: context.textTheme.bodyText2!
+                        .copyWith(color: context.colors.secondaryVariant),
+                  ),
                 ),
               ),
             ]),
