@@ -100,10 +100,12 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
             title: Column(mainAxisSize: MainAxisSize.min, children: [
               AutoLocaleText(
                 value: 'İçimizdeki Şeytan',
-                style: context.textTheme.bodyText2!.copyWith(
-                    color: opacity < 0.7
-                        ? context.colors.surface
-                        : context.colors.onPrimary),
+                style: context.textTheme.bodyText1!.copyWith(
+                  color: opacity < 0.7
+                      ? context.colors.surface
+                      : context.colors.onPrimary,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               AnimatedOpacity(
                 opacity: opacity == -1 ? 1 : (1 - opacity),
