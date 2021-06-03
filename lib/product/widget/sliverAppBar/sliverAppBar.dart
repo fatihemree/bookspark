@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import '../../../core/extension/context_extension.dart';
 
@@ -8,18 +10,27 @@ class CustomSliderAppBar extends StatefulWidget {
 }
 
 class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
-  // late ScrollController? _controller;
+  late final _controller;
+  double opacity = 1;
   @override
   void initState() {
-    // _controller = ScrollController();
-    // TODO: implement initState
+    _controller = ScrollController();
+    _controller.addListener(() => setState(() {
+          var scrollSetting = _controller.offset / 220;
+          opacity = scrollSetting.isNegative
+              ? 0
+              : scrollSetting > 1
+                  ? 1
+                  : scrollSetting;
+        }));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    // print('fa');
     return CustomScrollView(
-      // controller: _controller,
+      controller: _controller,
       slivers: <Widget>[
         SliverAppBar(
           pinned: true,
@@ -36,13 +47,16 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
                 'İçimizdeki Şeytan',
                 style: context.textTheme.subtitle1,
               ),
-              Opacity(
-                opacity: 1,
-                child: Text(
-                  'abc',
-                  style: context.textTheme.subtitle2,
+              AnimatedOpacity(
+                opacity: (1 - opacity),
+                duration: Duration(milliseconds: 300),
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 300),
+                  height: opacity > 0.7 ? 0 : 20,
+                  decoration: BoxDecoration(),
+                  child: Text('emre'),
                 ),
-              )
+              ),
             ]),
           ),
         ),
@@ -59,4 +73,18 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
       ],
     );
   }
+
+  customScrollControllerOffset(
+    double setValue,
+    double height,
+    ScrollController controller,
+  ) =>
+      {
+        if (controller.hasClients)
+          {
+            print((controller.offset / height).ceilToDouble()),
+            setState(
+                () => setValue = (controller.offset / height).ceilToDouble())
+          }
+      };
 }
