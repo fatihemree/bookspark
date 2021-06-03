@@ -13,7 +13,7 @@ class CustomSliderAppBar extends StatefulWidget {
 class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
   late final _controller;
 
-  double opacity = 1;
+  double opacity = -1;
   @override
   void initState() {
     _controller = ScrollController();
@@ -30,6 +30,7 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
 
   @override
   Widget build(BuildContext context) {
+    print(opacity);
     return CustomScrollView(
       controller: _controller,
       slivers: <Widget>[
@@ -51,12 +52,13 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
                 style: context.textTheme.bodyText1,
               ),
               AnimatedOpacity(
-                opacity: (1 - opacity),
+                opacity: opacity == -1 ? 1 : (1 - opacity),
                 duration: Duration(milliseconds: 300),
                 child: AnimatedContainer(
                   duration: Duration(milliseconds: 300),
                   height: opacity > 0.7 ? 0 : context.width * 0.05,
-                  decoration: BoxDecoration(),
+                  // height: 10,
+                  curve: Curves.bounceInOut,
                   child: AutoLocaleText(
                     value: 'Sabahattin Ali',
                     style: context.textTheme.bodyText2!
