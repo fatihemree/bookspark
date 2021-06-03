@@ -34,7 +34,6 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    print(opacity);
     return CustomScrollView(
       controller: _controller,
       slivers: <Widget>[
@@ -43,7 +42,10 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
           expandedHeight: context.height * 0.35,
           backgroundColor: context.colors.surface,
           leading: IconButton(
-            icon: Icon(Icons.chevron_left_outlined),
+            icon: Icon(
+              Icons.chevron_left_outlined,
+              color: opacity < .7 ? context.colors.surface : Colors.black,
+            ),
             onPressed: () {},
           ),
           flexibleSpace: FlexibleSpaceBar(
