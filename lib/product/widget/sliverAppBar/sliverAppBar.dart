@@ -4,7 +4,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:fluttermvvmtemplate/core/components/text/auto_locale_text.dart';
+import 'package:fluttermvvmtemplate/product/widget/card/shadowContainer.dart';
 import 'package:fluttermvvmtemplate/product/widget/chart/circularProgressBar.dart';
+import 'package:fluttermvvmtemplate/product/widget/text/HeaderText.dart';
+import 'package:fluttermvvmtemplate/product/widget/text/TextBottomLine.dart';
 import '../../../core/extension/context_extension.dart';
 
 class CustomSliderAppBar extends StatefulWidget {
@@ -62,7 +65,7 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
                 // borderRadius: BorderRadius.all(Radius.circular(40)),
                 // clipBehavior: Clip.antiAlias,
                 child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
+                  filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
                   child: Container(
                     color: Colors.black.withOpacity(0.1),
                     child: Column(
@@ -132,10 +135,48 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
         SliverList(
           delegate: SliverChildListDelegate(
             <Widget>[
-              Container(color: Colors.red, height: 500),
-              Container(color: Colors.red, height: 500),
-              Container(color: Colors.red, height: 500),
-              Container(color: Colors.red, height: 500)
+              // HeaderText(text: "Aktivite"),
+              Container(
+                // height: context.height * .25,
+                color: context.colors.surface,
+                child: Row(
+                  children: [
+                    buildBookDetailTab(context, 'Okuyanlar', '10'),
+                    buildBookDetailTab(context, 'Alıntılar', '28'),
+                    buildBookDetailTab(context, 'Ort. Gün', '9'),
+                    buildBookDetailTab(context, 'Ort. Sayfa', '28'),
+                  ],
+                ),
+              ),
+              HeaderText(
+                text: 'Künye',
+                isIcon: false,
+              ),
+              ShadowContainer(
+                padding: EdgeInsets.zero,
+                contentPadding: EdgeInsets.symmetric(
+                    vertical: context.mediumValue,
+                    horizontal: context.lowValue),
+                child: Container(
+                  height: context.height * .05,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      buildBookTag(context, 'Edebiyat'),
+                      buildBookTag(context, 'Sanat'),
+                      buildBookTag(context, 'Klasikler'),
+                      buildBookTag(context, 'Klasikler'),
+                      buildBookTag(context, 'Klasikler'),
+                      buildBookTag(context, 'Klasikler'),
+                      buildBookTag(context, 'Klasikler'),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                height: 800,
+                // color: Colors.black12,
+              )
             ],
           ),
         ),
@@ -143,17 +184,49 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
     );
   }
 
-  customScrollControllerOffset(
-    double setValue,
-    double height,
-    ScrollController controller,
-  ) =>
-      {
-        if (controller.hasClients)
-          {
-            print((controller.offset / height).ceilToDouble()),
-            setState(
-                () => setValue = (controller.offset / height).ceilToDouble())
-          }
-      };
+  Flexible buildBookDetailTab(
+      BuildContext context, String title, String value) {
+    return Flexible(
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            right: BorderSide(color: context.colors.primary),
+          ),
+          boxShadow: [context.shadowContainerDefault],
+        ),
+        padding: context.paddingNormalVertical,
+        child: TextBottomLine(
+          title: title,
+          styleTitle: context.textTheme.bodyText2!
+              .copyWith(color: context.colors.onPrimary),
+          value: value,
+          styleValue: context.textTheme.bodyText2!.copyWith(
+              color: context.colors.onPrimary, fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
+  }
+
+  Padding buildBookTag(BuildContext context, String text) {
+    return Padding(
+      padding: context.paddingLowHorizontal,
+      child: Container(
+        padding: context.paddingLow,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(context.lowValue),
+          color: context.colors.primary,
+          border: Border.all(
+            color: context.colors.primaryVariant.withOpacity(0.8),
+            width: 1,
+          ),
+        ),
+        child: Center(
+          child: AutoLocaleText(
+              value: text,
+              style: context.textTheme.bodyText2!
+                  .copyWith(color: context.colors.secondaryVariant)),
+        ),
+      ),
+    );
+  }
 }

@@ -21,7 +21,7 @@ class BottomSheetWidget extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
         child: child,
         onTap: () => onNavigation
             ? _buildShowBottomSheetOnNavigation(
@@ -116,8 +116,8 @@ class BottomSheetWidget extends StatelessWidget {
         ),
         child: Text(
           title,
-          style:
-              context.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold),
+          style: context.textTheme.subtitle1!
+              .copyWith(fontWeight: FontWeight.bold),
         ),
       ),
     );

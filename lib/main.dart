@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttermvvmtemplate/views/book_detail/book_detail_view.dart';
 import 'package:kartal/kartal.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +12,6 @@ import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider_list.dart';
 import 'core/init/notifier/theme_notifer.dart';
 import 'product/widget/bottomNavigation/bottom_navigation.dart';
-// import 'view/home/burger/view/burgers_view.dart';
 
 Future<void> main() async {
   await _init();
@@ -39,7 +39,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: context.watch<ThemeNotifier>().currentTheme,
-      home: BottomNavigation(),
+      // home: BottomNavigation(),
+      home: BookDetail(),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,

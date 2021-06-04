@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermvvmtemplate/product/widget/CalendarTask/CalendarGrid.dart';
+import 'package:fluttermvvmtemplate/product/widget/text/HeaderText.dart';
 // import '../../product/widget/calendar/calendar.dart';
 // import '../../product/widget/chart/circularProgressBar.dart';
 // import '../../product/widget/card/homeBookCard.dart';
@@ -19,7 +20,7 @@ class HomeView extends StatelessWidget {
             HomeBookCard(),
             CalendarGrid(),
             // buildHeadline(context, 'Notlar'),
-            buildHeadlineWithIcon(context, 'Notlar'),
+            HeaderText(text: 'Notlar'),
             Padding(
               padding: context.paddingDefaultAppVertical,
               child: Container(

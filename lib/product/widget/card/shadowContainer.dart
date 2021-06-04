@@ -10,7 +10,7 @@ class ShadowContainer extends StatelessWidget {
     required this.child,
     this.padding,
     this.contentPadding,
-  }) : assert(padding == null && contentPadding == null);
+  });
 
   @override
   Widget build(BuildContext context) {
