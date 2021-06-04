@@ -3,11 +3,13 @@ import '../../../core/extension/context_extension.dart';
 
 class HeaderText extends StatelessWidget {
   final String text;
+  final Widget? rightArea;
   final bool isIcon;
   const HeaderText({
     Key? key,
     required this.text,
     this.isIcon = true,
+    this.rightArea,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -30,12 +32,14 @@ class HeaderText extends StatelessWidget {
                 fontWeight: FontWeight.bold, fontSize: context.width * .05),
             textAlign: TextAlign.left,
           ),
-          isIcon
-              ? Icon(
-                  icon as IconData? ?? Icons.chevron_right_sharp,
-                  color: context.colors.secondaryVariant,
-                )
-              : SizedBox()
+          rightArea == null
+              ? isIcon
+                  ? Icon(
+                      icon as IconData? ?? Icons.chevron_right_sharp,
+                      color: context.colors.secondaryVariant,
+                    )
+                  : SizedBox()
+              : rightArea!
         ],
       ),
     );

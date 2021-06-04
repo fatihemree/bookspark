@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:fluttermvvmtemplate/core/components/text/auto_locale_text.dart';
 import 'package:fluttermvvmtemplate/product/widget/card/shadowContainer.dart';
 import 'package:fluttermvvmtemplate/product/widget/chart/circularProgressBar.dart';
+import 'package:fluttermvvmtemplate/product/widget/slider/TextViewSlider.dart';
 import 'package:fluttermvvmtemplate/product/widget/text/HeaderText.dart';
 import 'package:fluttermvvmtemplate/product/widget/text/TextBottomLine.dart';
 import '../../../core/extension/context_extension.dart';
@@ -19,7 +20,7 @@ class CustomSliderAppBar extends StatefulWidget {
 class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
   late final _controller;
   final _imgUrl =
-      'https://yeni.1000kitap.com/_next/image?url=https%3A%2F%2Fcdn.1000kitap.com%2Fresimler%2Fkitaplar%2F12903_uzgun_Kediler_Gazeli-Haydar_Ergulen915.jpg&w=1920&q=75';
+      'https://cdn.1000kitap.com/k/resimler/kitaplar/Icimizdeki-Seytan_562_1410469176.jpg';
   double opacity = -1;
   @override
   void initState() {
@@ -149,9 +150,14 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
                 ),
               ),
               HeaderText(
-                text: 'Künye',
-                isIcon: false,
-              ),
+                  text: 'Sayfa Sayısı',
+                  rightArea: Text(
+                    "256",
+                    style: context.textTheme.subtitle2!
+                        .copyWith(fontWeight: FontWeight.bold),
+                  )),
+              CustomShadowContainer(context, SliderTextView()),
+              HeaderText(text: 'Tür', isIcon: false),
               ShadowContainer(
                 padding: EdgeInsets.zero,
                 contentPadding: EdgeInsets.symmetric(
@@ -173,15 +179,24 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
                   ),
                 ),
               ),
-              Container(
-                height: 800,
-                // color: Colors.black12,
-              )
+              HeaderText(text: 'Açıklama'),
+              CustomShadowContainer(
+                  context,
+                  Text(
+                      "İsteyip istemediğimi doğru dürüst bilmediğim, fakat neticesi aleyhime çıkarsa istemediğimi iddia ettiğim bu nevi söz ve fiillerimin: daimi bir mesulünü bulmuştum: Buna içimdeki şeytan diyordum"))
             ],
           ),
         ),
       ],
     );
+  }
+
+  ShadowContainer CustomShadowContainer(BuildContext context, Widget widget) {
+    return ShadowContainer(
+        padding: EdgeInsets.zero,
+        contentPadding: EdgeInsets.symmetric(
+            vertical: context.mediumValue, horizontal: context.width * .075),
+        child: widget);
   }
 
   Flexible buildBookDetailTab(
@@ -190,7 +205,7 @@ class _CustomSliderAppBarState extends State<CustomSliderAppBar> {
       child: Container(
         decoration: BoxDecoration(
           border: Border(
-            right: BorderSide(color: context.colors.primary),
+            right: BorderSide(color: context.colors.secondary),
           ),
           boxShadow: [context.shadowContainerDefault],
         ),
